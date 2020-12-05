@@ -29,6 +29,9 @@ const $divContainer = document.querySelector('.container');
 
 function displayStories(story) {
     story.forEach(showStory)
+
+    const loadingGif = document.querySelector('.loading')
+    loadingGif.remove()
 };
 
 function showStory(story) {
