@@ -23,20 +23,6 @@ const $divContainer = document.querySelector('.container');
 
   // end cardcarousel feature
 
-let news = [
-    {
-        "source": {
-        "id": "the-washington-post",
-        "name": "The Washington Post"
-        },
-        "author": "John Wagner",
-        "title": "Live updates: Harris names chief of staff, other key aides as Biden transition continues - The Washington Post",
-        "description": "The president-elect is hunkered down in Wilmington, Del., with plans to receive an intelligence briefing and meet with transition advisers.",
-        "url": "https://www.washingtonpost.com/politics/2020/12/03/joe-biden-trump-transition-live-updates/",
-        "urlToImage": "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/HBB7HXHLXZHBLCJ7VNHMATDLNI.jpg&w=1440",
-        "publishedAt": "2020-12-03T14:33:21Z",
-        "content": "Trump campaign attorneys Rudolph W. Giuliani and Jenna Ellis urged Michigan legislators Wednesday night to intervene in the presidential race and act to overturn certified results showing that Biden … [+1381 chars]"
-    }];
 
 fetch("http://localhost:3000/technology")
     .then(response => response.json())
@@ -44,6 +30,9 @@ fetch("http://localhost:3000/technology")
 
 function displayStories(story) {
     story.forEach(showStory)
+
+    const loadingGif = document.querySelector('.loading')
+    loadingGif.remove()
 };
 
 function showStory(story) {

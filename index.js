@@ -29,6 +29,9 @@ fetch("http://localhost:3000/articles")
 
 function displayStories(story) {
     story.forEach(showStory)
+
+    const loadingGif = document.querySelector('.loading')
+    loadingGif.remove()
 };
 
 function showStory(story) {

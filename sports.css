@@ -91,6 +91,11 @@ body {
   width: 100vw;
   height: fit-content;
 }
+
+.loading {
+  display: flex;
+  justify-content: center;
+}
   
 .container {
   padding-top: 2em;
