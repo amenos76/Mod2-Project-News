@@ -1,25 +1,37 @@
 const $divContainer = document.querySelector('.container');
 
 
+document.addEventListener('click', activateCarousel)
+
+function activateCarousel(event){
+    if (event.target === document.getElementById("on-button")) {
+        carouselCards()
+        console.log("Autoscroll turned on!")
+    }
+    if (event.target === document.getElementById("off-button")) {
+        
+        console.log("Autoscroll turned off!")
+    }
+}
+
 // card carousel feature
 
-// (function() {
-//     setInterval(function() {
-//       const $parentContainer = document.querySelector('.container');
-//       const $divItem = $parentContainer.querySelectorAll('.item');
+function carouselCards() {
+    setInterval(function() {
+      const $parentContainer = document.querySelector('.container');
+      const $divItem = $parentContainer.querySelectorAll('.item');
   
 
-//       $divItem.forEach((card) => {
-//           card.classList.toggle('sliding-now');
-//       })
+      $divItem.forEach((card) => {
+          card.classList.toggle('sliding-now');
+      })
   
-//       setTimeout(function() {
-//         $parentContainer.appendChild($divItem[0]);
-//       }, 5000);
+      setTimeout(function() {
+        $parentContainer.appendChild($divItem[0]);
+      }, 5000);
   
-//     }, 5000);
-//   })()
-  
+    }, 5000);
+  }
 
   // end cardcarousel feature
 
@@ -55,3 +67,4 @@ function showStory(story) {
     $storyCard.append($title, $description, $image, $linkToStory)
     $divContainer.appendChild($storyCard)
 };
+

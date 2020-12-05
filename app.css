@@ -92,13 +92,18 @@ body {
   height: fit-content;
 }
 
+#on-button, #off-button {
+  margin-top: 1em;
+  margin-left: 1em;
+}
+
 .loading {
   display: flex;
   justify-content: center;
 }
   
 .container {
-  padding-top: 2em;
+  padding-top: 0.5em;
   overflow-y: hidden;
   /* max-height: calc(100vh - 4em); */
   width: 70vw;
@@ -140,8 +145,6 @@ body {
   margin-left: auto;
   margin-right: auto;
   max-width: 75%;
-  /* background-color: #e8e8e8; */
-  /* box-shadow: 1px 3px 5px #888888; */
 }
 
 .item > img {
@@ -175,3 +178,4 @@ body {
     transform: translateY(calc(-17.5em - 1em));
   }
 }
+
