@@ -24,8 +24,8 @@ const $divContainer = document.querySelector('.container');
   // end cardcarousel feature
 
   fetch("http://localhost:3000/sports")
-  .then(response => response.json())
-  .then(sports_articles => displayStories(sports_articles));
+    .then(response => response.json())
+    .then(sports_articles => displayStories(sports_articles));
 
 function displayStories(story) {
     story.forEach(showStory)

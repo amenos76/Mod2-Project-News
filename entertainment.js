@@ -23,22 +23,9 @@ const $divContainer = document.querySelector('.container');
 
   // end cardcarousel feature
 
-let news = [
-    {
-        "source": {
-        "id": null,
-        "name": "Chicago Tribune"
-        },
-        "author": "Eli Countryman, Variety",
-        "title": "Chicago’s John Mulaney says he was investigated by Secret Service - Chicago Tribune",
-        "description": "Chicago’s John Mulaney says he was investigated by Secret Service after ‘SNL’ joke",
-        "url": "https://www.chicagotribune.com/entertainment/ct-ent-john-mulaney-investigated-after-snl-joke-20201203-5azcx72y6jey7byy6fgnetvg6m-story.html",
-        "urlToImage": "https://www.chicagotribune.com/resizer/M0r4nL-xtYlG6vOz1cUdk1PdkZQ=/1200x0/top/cloudfront-us-east-1.images.arcpublishing.com/tronc/F2WD3N4W6ZFWRA56CQ6EPIWIFA.jpg",
-        "publishedAt": "2020-12-03T12:51:00Z",
-        "content": "John Mulaney said comments he made on Saturday Night Live in February resulted in the Secret Service opening an investigation into him.\r\nDuring an interview on Jimmy Kimmel Live! on Tuesday, the come… [+1632 chars]"
-        }];
-
-displayStories(news)
+fetch("http://localhost:3000/entertainment")
+    .then(response => response.json())
+    .then(entertainment_articles => displayStories(entertainment_articles));
 
 function displayStories(story) {
     story.forEach(showStory)
