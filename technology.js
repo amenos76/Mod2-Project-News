@@ -38,7 +38,9 @@ let news = [
         "content": "Trump campaign attorneys Rudolph W. Giuliani and Jenna Ellis urged Michigan legislators Wednesday night to intervene in the presidential race and act to overturn certified results showing that Biden … [+1381 chars]"
     }];
 
-displayStories(news)
+fetch("http://localhost:3000/technology")
+    .then(response => response.json())
+    .then(technology_articles => displayStories(technology_articles));
 
 function displayStories(story) {
     story.forEach(showStory)
