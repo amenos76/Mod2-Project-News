@@ -19,15 +19,15 @@ function activateCarousel(event){
 function carouselCards() {
     setInterval(function() {
       const $parentContainer = document.querySelector('.container');
-      const $divItem = $parentContainer.querySelectorAll('.item');
+      const $divCard = $parentContainer.querySelectorAll('.item');
   
 
-      $divItem.forEach((card) => {
+      $divCard.forEach((card) => {
           card.classList.toggle('sliding-now');
       })
   
       setTimeout(function() {
-        $parentContainer.appendChild($divItem[0]);
+        $parentContainer.appendChild($divCard[0]);
       }, 5000);
   
     }, 5000);
@@ -58,6 +58,7 @@ function showStory(story) {
 
     const $image = document.createElement('img')
     $image.src = story.urlToImage
+    $image.alt = story.title
 
     const $linkToStory = document.createElement('a')
     $linkToStory.setAttribute('href', story.url)

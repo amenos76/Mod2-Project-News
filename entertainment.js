@@ -3,22 +3,22 @@ const $divContainer = document.querySelector('.container');
 
 // card carousel feature
 
-// (function() {
-//     setInterval(function() {
-//       const $parentContainer = document.querySelector('.container');
-//       const $divItem = $parentContainer.querySelectorAll('.item');
+(function() {
+    setInterval(function() {
+      const $parentContainer = document.querySelector('.container');
+      const $divItem = $parentContainer.querySelectorAll('.item');
   
 
-//       $divItem.forEach((card) => {
-//           card.classList.toggle('sliding-now');
-//       })
+      $divItem.forEach((card) => {
+          card.classList.toggle('sliding-now');
+      })
   
-//       setTimeout(function() {
-//         $parentContainer.appendChild($divItem[0]);
-//       }, 5000);
+      setTimeout(function() {
+        $parentContainer.appendChild($divItem[0]);
+      }, 5000);
   
-//     }, 5000);
-//   })()
+    }, 5000);
+  })()
   
 
   // end cardcarousel feature
@@ -46,6 +46,7 @@ function showStory(story) {
 
     const $image = document.createElement('img')
     $image.src = story.urlToImage
+    $image.alt = story.title
 
     const $linkToStory = document.createElement('a')
     $linkToStory.setAttribute('href', story.url)
