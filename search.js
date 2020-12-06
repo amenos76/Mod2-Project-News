@@ -1,31 +1,14 @@
+const baseURL = "http://localhost:3000";
+
+
 const $divContainer = document.querySelector('.container');
 
 
-// card carousel feature
 
-(function() {
-    setInterval(function() {
-      const $parentContainer = document.querySelector('.container');
-      const $divItem = $parentContainer.querySelectorAll('.item');
-  
 
-      $divItem.forEach((card) => {
-          card.classList.toggle('sliding-now');
-      })
-  
-      setTimeout(function() {
-        $parentContainer.appendChild($divItem[0]);
-      }, 5000);
-  
-    }, 5000);
-  })()
-  
 
-  // end cardcarousel feature
 
-  fetch("http://localhost:3000/sports")
-    .then(response => response.json())
-    .then(sports_articles => displayStories(sports_articles));
+
 
 function displayStories(story) {
     story.forEach(showStory)

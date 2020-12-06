@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>News</title>
+        <script src="search.js" defer></script>
+        <link rel="stylesheet" href="app.css">
+    </head>
+    <body>
+      <section id="header">
+        <h1>Search</h1>
+      </section>
+      <section id="navigation">
+        <a href="index.html" class="nav-links" id="trending-link">Trending</a>
+        <a href="sports.html" class="nav-links" id="sports-link">Sports</a>
+        <a href="entertainment.html" class="nav-links" id="entertainment-link">Entertainment</a>
+        <a href="technology.html" class="nav-links" id="technology-link">Technology</a>
+        <a href="search.html" class="nav-links" id="search-link">Search</a>
+        <a href="favorites.html" class="nav-links" id="favorites-link">My Feed</a>
+
+      </section>
+        <div id="search-container">
+            <form id="search-form">
+                <label for="keyword-field">Keyword:</label>
+                <input 
+                id="keyword-field" 
+                type="text" placeholder="enter keyword" 
+                name="keyword">
+                <label for="category-field">Category:</label>
+                <select name="category" id="category-field">
+                    <option value="trending">Trending</option>
+                    <option value="sports">Sports</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="technology">Technology</option>
+                </select>
+                 
+                <input type="submit" value="Search" class="button">
+
+
+            </form>
+        </div>
+        <!-- <div class="loading">
+          <img src="https://www2.ihe.net/membership_directory/assets/img/loading.gif">
+        </div> -->
+        <div class="container">
+  
+        </div>
+        
+    </body>
+</html>
