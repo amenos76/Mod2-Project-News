@@ -1,27 +1,33 @@
 const $divContainer = document.querySelector('.container');
 
+document.addEventListener('click', activateCarousel)
 
-// card carousel feature
+function activateCarousel(event){
+    if (event.target === document.getElementById("on-button")) {
+        carouselCards()
+        console.log("Autoscroll turned on!")
+    }
+    if (event.target === document.getElementById("off-button")) {
+        console.log("Autoscroll turned off!")
+    }
+}
 
-(function() {
+function carouselCards() {
     setInterval(function() {
       const $parentContainer = document.querySelector('.container');
-      const $divItem = $parentContainer.querySelectorAll('.item');
+      const $divCard = $parentContainer.querySelectorAll('.item');
   
 
-      $divItem.forEach((card) => {
+      $divCard.forEach((card) => {
           card.classList.toggle('sliding-now');
       })
   
       setTimeout(function() {
-        $parentContainer.appendChild($divItem[0]);
+        $parentContainer.appendChild($divCard[0]);
       }, 5000);
-  
-    }, 5000);
-  })()
-  
 
-  // end cardcarousel feature
+    }, 5000);
+  }
 
 fetch("http://localhost:3000/entertainment")
     .then(response => response.json())

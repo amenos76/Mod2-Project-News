@@ -1,6 +1,5 @@
 const $divContainer = document.querySelector('.container');
 
-
 document.addEventListener('click', activateCarousel)
 
 function activateCarousel(event){
@@ -12,16 +11,6 @@ function activateCarousel(event){
         console.log("Autoscroll turned off!")
     }
 }
-
-document.addEventListener('click', addToFavorites)
-
-function addToFavorites(event){
-    if (event.target === document.getElementById("favorites-button")) {
-
-    }
-}
-
-// card carousel feature
 
 function carouselCards() {
     setInterval(function() {
@@ -40,11 +29,12 @@ function carouselCards() {
     }, 5000);
   }
 
-  // end cardcarousel feature
-
 fetch("http://localhost:3000/articles")
     .then(response => response.json())
     .then(articles => displayStories(articles));
+
+
+    
 
 function displayStories(story) {
     story.forEach(showStory)
@@ -76,8 +66,9 @@ function showStory(story) {
     $FavoritesButton.className = "button"
     $FavoritesButton.id = "favorites-button"
     $FavoritesButton.textContent = "Add to My Feed"
+    $FavoritesButton.onclick = function() { alert('Article added to your feed!'); };
 
-    let storyKeyValues = {
+    const storyKeyValues = {
         title: story.title, 
         description: story.description, 
         link_to_image: story.urlToImage, 
@@ -86,4 +77,5 @@ function showStory(story) {
     $storyCard.append($title, $description, $image, $linkToStory, $FavoritesButton)
     $divContainer.appendChild($storyCard)
 };
+
 
