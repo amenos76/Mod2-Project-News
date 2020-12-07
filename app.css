@@ -201,7 +201,7 @@ body {
 
 #favorites-button {
   font-family: 'Bebas Neue', cursive;
-  font-size: 14px;
+  font-size: 16px;
   
 }
 
@@ -246,4 +246,32 @@ form {
   padding: 10px;
   box-shadow: 1px 3px 5px #888888;
   border-radius: 10px;
+}
+
+#results-message {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 28px;
+  padding-bottom: 0.5em;
+  color: #4F5D75;
+}
+
+#no-results-found-card {
+  height: 4.0em;
+  width: 40vw;
+  margin: auto;
+  margin-top: 0.0em;
+  margin-bottom: 0.5em;
+}
+
+#no-results-found-card > p {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+}
+#no-results-found-card > h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 34px;
+  
 }
