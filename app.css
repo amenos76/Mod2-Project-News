@@ -90,9 +90,13 @@ table {
   transition-duration: 0.4s;
 }
 
-
 #navigation > a:hover {
   color:rgb(92, 116, 254);
+}
+
+#button-div {
+  width: 15vw;
+  height: 0vh;
 }
 
 .button {
@@ -117,6 +121,11 @@ table {
   color: black;
 }
 
+#on-button, #off-button {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 14px;
+}
+
 body {
   font-size: 14px;
   background-color:#eaeaea;
@@ -130,7 +139,7 @@ body {
 }
   
 .container {
-  padding-top: 0.5em;
+  padding-top: 1em;
   overflow-y: hidden;
   /* max-height: calc(100vh - 4em); */
   width: 70vw;
