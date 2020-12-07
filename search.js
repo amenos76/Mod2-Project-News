@@ -1,13 +1,25 @@
-const baseURL = "http://localhost:3000";
+// const baseURL = "http://localhost:3000/";
 
 
 const $divContainer = document.querySelector('.container');
+const $searchForm = document.querySelector('.search-form')
+
+const queryParams = new URLSearchParams(window.location.search)
+
+const baseURL = "http://newsapi.org/v2/top-headlines?country=us"
+const api_key = "&apiKey=e5d29336262c4ceb8cb14b81d892adce"
+const categoryKey = `&category=${queryParams.get('category')}`
+const keywordKey = `&q=${queryParams.get('q')}`
 
 
+let searchURL = baseURL + categoryKey + keywordKey + api_key
+
+console.log("search URL is:", searchURL)
 
 
-
-
+fetch(searchURL)
+        .then(response => response.json())
+        .then(filtered_articles => displayStories(filtered_articles.articles));
 
 
 function displayStories(story) {

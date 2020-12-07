@@ -9,10 +9,11 @@ function activateCarousel(event){
         console.log("Autoscroll turned on!")
     }
     if (event.target === document.getElementById("off-button")) {
-        
+        cancelled = true
         console.log("Autoscroll turned off!")
     }
 }
+
 
 // card carousel feature
 
@@ -29,7 +30,7 @@ function carouselCards() {
       setTimeout(function() {
         $parentContainer.appendChild($divCard[0]);
       }, 5000);
-  
+
     }, 5000);
   }
 
