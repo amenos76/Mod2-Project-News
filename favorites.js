@@ -6,7 +6,6 @@ const $divContainer = document.querySelector('.container');
 fetch(favoritesURL)
     .then(response => response.json())
     .then(favorite_articles => displayStories(favorite_articles))
-    .then(addingEventListeners);
 
 function displayStories(story) {
     story.forEach(showStory)
@@ -57,38 +56,17 @@ function showStory(story) {
     $DeleteButton.id = "delete-button"
     $DeleteButton.textContent = "Remove From My Feed"
 
+    $DeleteButton.addEventListener('click', (event) => {
+        $storyCard.remove()
+        console.log(story.id)
+        console.log(`${favoritesURL}/${story.id}`)
+        fetch(`${favoritesURL}/${story.id}`, {
+            method: "DELETE"
+        })
+    })
+
     $storyCard.append($title, $description, $image, $linkToStory, $DeleteButton)
     $divContainer.appendChild($storyCard)
 };
 
 
-function addingEventListeners() {
-    const $cards = document.getElementsByClassName('item')
-
-    Array.from($cards).forEach(card => {
-        card.addEventListener('click', (event) => {
-            const storyCardDiv = event.target.parentNode
-            console.log(card)
-            const $title = storyCardDiv.querySelector('h2').innerText
-            const $description = storyCardDiv.querySelector('p').innerText
-            const $imageLink = storyCardDiv.querySelector('img').src
-            const $storyLink = storyCardDiv.querySelector('a').href
-            
-            const savedStory = {
-                title: $title,
-                description: $description,
-                link_to_image: $imageLink,
-                link_to_story: $storyLink
-            }
-
-            // fetch(`${favoritesURL}/${article.id}`, {
-            //     method: 'DELETE', 
-            //     headers: {
-            //         "Content-Type": "application/json", 
-            //         Accept: "application/json"
-            //     } 
-            // })
-            //     .then(response => response.json())
-        })
-    })
-}

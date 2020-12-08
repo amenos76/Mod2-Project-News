@@ -78,6 +78,7 @@ function addingEventListeners() {
     Array.from($cards).forEach(card => {
         card.addEventListener('click', (event) => {
             const storyCardDiv = event.target.parentNode
+            console.log(storyCardDiv)
 
             const $title = storyCardDiv.querySelector('h2').innerText
             const $description = storyCardDiv.querySelector('p').innerText
