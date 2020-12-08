@@ -63,13 +63,25 @@ function showStory(story) {
     $linkToStory.setAttribute('target', '_blank')
     $linkToStory.innerText = "Read full story"
 
-    const $FavoritesButton = document.createElement('button')
-    $FavoritesButton.className = "button"
-    $FavoritesButton.id = "favorites-button"
-    $FavoritesButton.textContent = "Add to My Feed"
+    const $favoritesButton = document.createElement('button')
+    $favoritesButton.className = "button"
+    $favoritesButton.id = "favorites-button"
+    $favoritesButton.textContent = "Add to My Feed"
+    $favoritesButton.onclick = changeButtonText;
 
-    $storyCard.append($title, $description, $image, $linkToStory, $FavoritesButton)
+
+    $storyCard.append($title, $description, $image, $linkToStory, $favoritesButton)
     $divContainer.appendChild($storyCard)
+};
+
+function changeButtonText() {
+    const $favoritesButton = document.getElementById("favorites-button");
+    if ($favoritesButton.innerHTML == "Add to My Feed") {
+        $favoritesButton.innerHTML = "Added";
+    }
+    else {
+        $favoritesButton.innerHTML = "Add to My Feed";
+    }
 };
 
 function addingEventListeners() {

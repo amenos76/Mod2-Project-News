@@ -3,19 +3,18 @@ const favoritesURL = `${baseURL}/favorites`;
 const technologyURL = `${baseURL}/technology`;
 const $divContainer = document.querySelector('.container');
 
-
-document.addEventListener('click', activateCarousel)
+document.addEventListener('click', activateCarousel);
 
 let timer;
 
 function activateCarousel(event){
     if (event.target === document.getElementById("on-button")) {
-        carouselCards()
-        console.log("Autoscroll turned on!")
+        carouselCards();
+        console.log("Autoscroll turned on!");
     }
     if (event.target === document.getElementById("off-button")) {
         clearInterval(timer);
-        console.log("Autoscroll turned off!")
+        console.log("Autoscroll turned off!");
     }
 }
 
@@ -39,58 +38,69 @@ fetch(technologyURL)
     .then(addingEventListeners);
 
 function displayStories(story) {
-    story.forEach(showStory)
+    story.forEach(showStory);
 
-    const loadingGif = document.querySelector('.loading')
-    loadingGif.remove()
+    const loadingGif = document.querySelector('.loading');
+    loadingGif.remove();
 };
 
 function showStory(story) {
-    const $storyCard = document.createElement("div")
+    const $storyCard = document.createElement("div");
     $storyCard.className = "item";
 
-    const $title = document.createElement('h2')
-    $title.textContent = story.title
+    const $title = document.createElement('h2');
+    $title.textContent = story.title;
 
-    const $description = document.createElement('p')
-    $description.textContent = story.description
+    const $description = document.createElement('p');
+    $description.textContent = story.description;
 
-    const $image = document.createElement('img')
-    $image.src = story.urlToImage
-    $image.alt = story.title
+    const $image = document.createElement('img');
+    $image.src = story.urlToImage;
+    $image.alt = story.title;
 
-    const $linkToStory = document.createElement('a')
-    $linkToStory.setAttribute('href', story.url)
-    $linkToStory.setAttribute('target', '_blank')
-    $linkToStory.innerText = "Read full story"
+    const $linkToStory = document.createElement('a');
+    $linkToStory.setAttribute('href', story.url);
+    $linkToStory.setAttribute('target', '_blank');
+    $linkToStory.innerText = "Read full story";
 
-    const $FavoritesButton = document.createElement('button')
-    $FavoritesButton.className = "button"
-    $FavoritesButton.id = "favorites-button"
-    $FavoritesButton.textContent = "Add to My Feed"
+    const $favoritesButton = document.createElement('button');
+    $favoritesButton.className = "button";
+    $favoritesButton.id = "favorites-button";
+    $favoritesButton.textContent = "Add to My Feed";
+    $favoritesButton.onclick = changeButtonText;
 
-    $storyCard.append($title, $description, $image, $linkToStory, $FavoritesButton)
-    $divContainer.appendChild($storyCard)
+    $storyCard.append($title, $description, $image, $linkToStory, $favoritesButton);
+    $divContainer.appendChild($storyCard);
+};
+
+function changeButtonText() {
+    const $favoritesButton = document.getElementById("favorites-button");
+    if ($favoritesButton.innerHTML == "Add to My Feed") {
+        $favoritesButton.innerHTML = "Added";
+    }
+    else {
+        $favoritesButton.innerHTML = "Add to My Feed";
+    }
 };
 
 function addingEventListeners() {
-    const $cards = document.getElementsByClassName('item')
+    const $cards = document.getElementsByClassName('item');
 
     Array.from($cards).forEach(card => {
         card.addEventListener('click', (event) => {
-            const storyCardDiv = event.target.parentNode
+            const storyCardDiv = event.target.parentNode;
 
-            const $title = storyCardDiv.querySelector('h2').innerText
-            const $description = storyCardDiv.querySelector('p').innerText
-            const $imageLink = storyCardDiv.querySelector('img').src
-            const $storyLink = storyCardDiv.querySelector('a').href
+            const $title = storyCardDiv.querySelector('h2').innerText;
+            const $description = storyCardDiv.querySelector('p').innerText;
+            const $imageLink = storyCardDiv.querySelector('img').src;
+            const $storyLink = storyCardDiv.querySelector('a').href;
             
             const savedStory = {
                 title: $title,
                 description: $description,
                 link_to_image: $imageLink,
                 link_to_story: $storyLink
-            }
+            };
 
             fetch(favoritesURL, {
                 method: 'POST', 
@@ -98,9 +108,9 @@ function addingEventListeners() {
                 headers: {
                     "Content-Type": "application/json", 
                     Accept: "application/json"
-                } 
+                }
             })
                 .then(response => response.json())
         })
     })
-}
+};
