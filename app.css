@@ -214,7 +214,7 @@ body {
   color: rgb(92, 116, 254);
 }
 
-#favorites-button {
+#favorites-button, #delete-button {
   font-family: 'Bebas Neue', cursive;
   font-size: 16px;
 }
@@ -290,6 +290,25 @@ form {
 }
 
 #no-results-found-card > h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 34px;
+  
+}
+
+#nothing-saved-card {
+  height: 5.0em;
+  width: 40vw;
+  margin: auto;
+  margin-top: 0.0em;
+  margin-bottom: 0.5em;
+}
+
+#nothing-saved-card > p {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+}
+
+#nothing-saved-card > h2 {
   font-family: "Bebas Neue", sans-serif;
   font-size: 34px;
   
