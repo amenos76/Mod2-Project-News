@@ -55,8 +55,14 @@ function showStory(story) {
     $description.textContent = story.description;
 
     const $image = document.createElement('img');
-    $image.src = story.urlToImage;
-    $image.alt = story.title;
+    if (story.urlToImage ==  null) {
+        $image.src = "https://vcunited.club/wp-content/uploads/2020/01/No-image-available-2.jpg"
+        $image.alt = "No image available"
+    }
+    else {
+        $image.src = story.urlToImage
+        $image.alt = story.title
+    }
 
     const $linkToStory = document.createElement('a');
     $linkToStory.setAttribute('href', story.url);

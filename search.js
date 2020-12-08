@@ -6,9 +6,9 @@ const $searchForm = document.querySelector('.search-form');
 const queryParams = new URLSearchParams(window.location.search);
 
 const searchBaseURL = "http://newsapi.org/v2/top-headlines?country=us";
-// const api_key = "&apiKey=e5d29336262c4ceb8cb14b81d892adce"
+const api_key = "&apiKey=e5d29336262c4ceb8cb14b81d892adce"
 // const api_key = "&apiKey=5afa4eb9d42144bd9419a4ec2683f5a1"
-const api_key = "&apiKey=6603667d30cd4006969dd06dd9fa0d79";
+// const api_key = "&apiKey=6603667d30cd4006969dd06dd9fa0d79";
 
 const categoryKey = queryParams.get('category');
 const keywordKey = queryParams.get('q');
@@ -100,8 +100,14 @@ function showStory(story) {
     $description.textContent = story.description;
 
     const $image = document.createElement('img');
-    $image.src = story.urlToImage;
-    $image.alt = story.title;
+    if (story.urlToImage ==  null) {
+        $image.src = "https://vcunited.club/wp-content/uploads/2020/01/No-image-available-2.jpg"
+        $image.alt = "No image available"
+    }
+    else {
+        $image.src = story.urlToImage
+        $image.alt = story.title
+    }
 
     const $linkToStory = document.createElement('a');
     $linkToStory.setAttribute('href', story.url);

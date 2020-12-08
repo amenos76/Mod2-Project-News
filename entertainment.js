@@ -55,8 +55,16 @@ function showStory(story) {
     $description.textContent = story.description
 
     const $image = document.createElement('img')
-    $image.src = story.urlToImage
-    $image.alt = story.title
+    if (story.urlToImage ==  null) {
+        $image.src = "https://vcunited.club/wp-content/uploads/2020/01/No-image-available-2.jpg"
+        $image.alt = "No image available"
+    }
+    else {
+        $image.src = story.urlToImage
+        $image.alt = story.title
+    }
+
+    
 
     const $linkToStory = document.createElement('a')
     $linkToStory.setAttribute('href', story.url)
@@ -74,6 +82,8 @@ function showStory(story) {
     $divContainer.appendChild($storyCard)
 };
 
+
+
 // function changeButtonText() {
 //     const $favoritesButton = document.getElementById("favorites-button");
 //     if ($favoritesButton.innerHTML == "Add to My Feed") {
@@ -90,6 +100,7 @@ function addingEventListeners() {
     Array.from($cards).forEach(card => {
         card.addEventListener('click', (event) => {
             const storyCardDiv = event.target.parentNode
+            // const $favoritesButton = storyCardDiv.querySelector("button");
 
             const $title = storyCardDiv.querySelector('h2').innerText
             const $description = storyCardDiv.querySelector('p').innerText
