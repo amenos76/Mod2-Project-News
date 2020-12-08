@@ -67,22 +67,22 @@ function showStory(story) {
     $favoritesButton.className = "button"
     $favoritesButton.id = "favorites-button"
     $favoritesButton.textContent = "Add to My Feed"
-    $favoritesButton.onclick = changeButtonText;
+    // $favoritesButton.onclick = changeButtonText;
 
 
     $storyCard.append($title, $description, $image, $linkToStory, $favoritesButton)
     $divContainer.appendChild($storyCard)
 };
 
-function changeButtonText() {
-    const $favoritesButton = document.getElementById("favorites-button");
-    if ($favoritesButton.innerHTML == "Add to My Feed") {
-        $favoritesButton.innerHTML = "Added";
-    }
-    else {
-        $favoritesButton.innerHTML = "Add to My Feed";
-    }
-};
+// function changeButtonText() {
+//     const $favoritesButton = document.getElementById("favorites-button");
+//     if ($favoritesButton.innerHTML == "Add to My Feed") {
+//         $favoritesButton.innerHTML = "Added";
+//     }
+//     else {
+//         $favoritesButton.innerHTML = "Add to My Feed";
+//     }
+// };
 
 function addingEventListeners() {
     const $cards = document.getElementsByClassName('item')
