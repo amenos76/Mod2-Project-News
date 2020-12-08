@@ -121,9 +121,15 @@ table {
   color: black;
 }
 
+.button:focus {
+  background-color: rgb(92, 116, 254);
+  color: black;
+}
+
 #on-button, #off-button {
   font-family: 'Bebas Neue', cursive;
   font-size: 14px;
+  
 }
 
 body {
@@ -211,7 +217,11 @@ body {
 #favorites-button {
   font-family: 'Bebas Neue', cursive;
   font-size: 16px;
-  
+}
+
+#favorites-button:focus {
+  background-color: white;
+  color: black;
 }
 
 .item.sliding-now {
@@ -231,7 +241,6 @@ body {
 #search-container {
   padding-top: 1em;
   overflow-y: hidden;
-  /* max-height: calc(100vh - 4em); */
   width: 30vw;
   margin: auto;
 }
@@ -279,6 +288,7 @@ form {
   font-family: "Roboto", sans-serif;
   font-size: 20px;
 }
+
 #no-results-found-card > h2 {
   font-family: "Bebas Neue", sans-serif;
   font-size: 34px;
