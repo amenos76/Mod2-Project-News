@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -129,7 +130,6 @@ table {
 #on-button, #off-button {
   font-family: 'Bebas Neue', cursive;
   font-size: 14px;
-  
 }
 
 body {
@@ -147,7 +147,6 @@ body {
 .container {
   padding-top: 1em;
   overflow-y: hidden;
-  /* max-height: calc(100vh - 4em); */
   width: 70vw;
   margin: auto;
 }
@@ -192,7 +191,6 @@ body {
 }
 
 .item > img {
-  /* max-width: 35%; */
   max-height: 50%;
   margin-left: auto;
   margin-right: auto;
