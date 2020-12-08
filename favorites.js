@@ -70,12 +70,12 @@ function showStory(story) {
     $description.textContent = story.description;
 
     const $image = document.createElement('img');
-    if (story.urlToImage ==  null) {
+    if (story.link_to_image ==  null) {
         $image.src = "https://vcunited.club/wp-content/uploads/2020/01/No-image-available-2.jpg"
         $image.alt = "No image available"
     }
     else {
-        $image.src = story.urlToImage
+        $image.src = story.link_to_image
         $image.alt = story.title
     }
 
