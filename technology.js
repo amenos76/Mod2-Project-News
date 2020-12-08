@@ -1,7 +1,12 @@
+const baseURL = 'http://localhost:3000';
+const favoritesURL = `${baseURL}/favorites`;
+const technologyURL = `${baseURL}/technology`;
 const $divContainer = document.querySelector('.container');
 
 
 document.addEventListener('click', activateCarousel)
+
+let timer;
 
 function activateCarousel(event){
     if (event.target === document.getElementById("on-button")) {
@@ -9,20 +14,18 @@ function activateCarousel(event){
         console.log("Autoscroll turned on!")
     }
     if (event.target === document.getElementById("off-button")) {
+        clearInterval(timer);
         console.log("Autoscroll turned off!")
     }
 }
 
 function carouselCards() {
-    setInterval(function() {
+    timer = setInterval(function() {
       const $parentContainer = document.querySelector('.container');
       const $divCard = $parentContainer.querySelectorAll('.item');
-  
-
       $divCard.forEach((card) => {
           card.classList.toggle('sliding-now');
       })
-  
       setTimeout(function() {
         $parentContainer.appendChild($divCard[0]);
       }, 5000);
@@ -30,12 +33,10 @@ function carouselCards() {
     }, 5000);
   }
 
- 
-
-
-fetch("http://localhost:3000/technology")
+fetch(technologyURL)
     .then(response => response.json())
-    .then(technology_articles => displayStories(technology_articles));
+    .then(technology_articles => displayStories(technology_articles))
+    .then(addingEventListeners);
 
 function displayStories(story) {
     story.forEach(showStory)
@@ -63,6 +64,43 @@ function showStory(story) {
     $linkToStory.setAttribute('target', '_blank')
     $linkToStory.innerText = "Read full story"
 
-    $storyCard.append($title, $description, $image, $linkToStory)
+    const $FavoritesButton = document.createElement('button')
+    $FavoritesButton.className = "button"
+    $FavoritesButton.id = "favorites-button"
+    $FavoritesButton.textContent = "Add to My Feed"
+
+    $storyCard.append($title, $description, $image, $linkToStory, $FavoritesButton)
     $divContainer.appendChild($storyCard)
 };
+
+function addingEventListeners() {
+    const $cards = document.getElementsByClassName('item')
+
+    Array.from($cards).forEach(card => {
+        card.addEventListener('click', (event) => {
+            const storyCardDiv = event.target.parentNode
+
+            const $title = storyCardDiv.querySelector('h2').innerText
+            const $description = storyCardDiv.querySelector('p').innerText
+            const $imageLink = storyCardDiv.querySelector('img').src
+            const $storyLink = storyCardDiv.querySelector('a').href
+            
+            const savedStory = {
+                title: $title,
+                description: $description,
+                link_to_image: $imageLink,
+                link_to_story: $storyLink
+            }
+
+            fetch(favoritesURL, {
+                method: 'POST', 
+                body: JSON.stringify(savedStory),
+                headers: {
+                    "Content-Type": "application/json", 
+                    Accept: "application/json"
+                } 
+            })
+                .then(response => response.json())
+        })
+    })
+}

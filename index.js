@@ -1,3 +1,6 @@
+const baseURL = 'http://localhost:3000';
+const favoritesURL = `${baseURL}/favorites`;
+const articlesURL = `${baseURL}/articles`;
 const $divContainer = document.querySelector('.container');
 
 document.addEventListener('click', activateCarousel)
@@ -10,7 +13,6 @@ function activateCarousel(event){
         console.log("Autoscroll turned on!")
     }
     if (event.target === document.getElementById("off-button")) {
-        console.log(timer)
         clearInterval(timer);
         console.log("Autoscroll turned off!")
     }
@@ -30,7 +32,7 @@ function carouselCards() {
     }, 5000);
   }
 
-fetch("http://localhost:3000/articles")
+fetch(articlesURL)
     .then(response => response.json())
     .then(articles => displayStories(articles))
     .then(addingEventListeners);
@@ -65,55 +67,39 @@ function showStory(story) {
     $FavoritesButton.className = "button"
     $FavoritesButton.id = "favorites-button"
     $FavoritesButton.textContent = "Add to My Feed"
-    
-
-    const storyKeyValues = {
-        title: story.title, 
-        description: story.description, 
-        link_to_image: story.urlToImage, 
-        link_to_story: story.url }
 
     $storyCard.append($title, $description, $image, $linkToStory, $FavoritesButton)
     $divContainer.appendChild($storyCard)
 };
-
-
-
-// const storyKeyValues = {
-//     title: story.title, 
-//     description: story.description, 
-//     link_to_image: story.urlToImage, 
-//     link_to_story: story.url }
-
-// fetch('https://localhost:3000/favorites', {
-//   method: 'POST',
-//   headers: {
-//     'Content-Type': 'application/json',
-//   },
-//   body: JSON.stringify(
-//      {title: "example", description: "example", link_to_image: "example", link_to_story: "example"}),
-// })
-
-const baseURL = 'http://localhost:3000';
-const favoritesURL = `${baseURL}/favorites`;
-
-
-// fetch(favoritesURL)
-//     .then(response => response.json())
-//     .then(favorites => console.log(favorites))
 
 function addingEventListeners() {
     const $cards = document.getElementsByClassName('item')
 
     Array.from($cards).forEach(card => {
         card.addEventListener('click', (event) => {
-            // console.log(event.target.parentNode);
             const storyCardDiv = event.target.parentNode
-            const title = storyCardDiv.firstChild
-            console.log(title)
-            const description = storyCardDiv.nextChild
-            console.log(description)
+
+            const $title = storyCardDiv.querySelector('h2').innerText
+            const $description = storyCardDiv.querySelector('p').innerText
+            const $imageLink = storyCardDiv.querySelector('img').src
+            const $storyLink = storyCardDiv.querySelector('a').href
             
+            const savedStory = {
+                title: $title,
+                description: $description,
+                link_to_image: $imageLink,
+                link_to_story: $storyLink
+            }
+
+            fetch(favoritesURL, {
+                method: 'POST', 
+                body: JSON.stringify(savedStory),
+                headers: {
+                    "Content-Type": "application/json", 
+                    Accept: "application/json"
+                } 
+            })
+                .then(response => response.json())
         })
     })
 }
